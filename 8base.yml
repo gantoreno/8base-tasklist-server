@@ -1,0 +1,6 @@
+functions:
+  toggleCompleted:
+    type: resolver
+    handler:
+      code: src/resolvers/toggleCompleted/handler.js
+    schema: src/resolvers/toggleCompleted/schema.graphql
