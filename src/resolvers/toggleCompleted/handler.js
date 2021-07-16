@@ -44,14 +44,16 @@ const TOGGLE_COMPLETED_MUTATION = gql`
 module.exports = async (event, ctx) => {
   const { id, completed } = event.data;
 
+  let success = true;
+
   try {
-    const response = await ctx.api.gqlRequest(TOGGLE_COMPLETED_MUTATION, {
+    await ctx.api.gqlRequest(TOGGLE_COMPLETED_MUTATION, {
       id,
       completed,
     });
   } catch {
-    return { data: { success: false } };
+    success = false;
   }
 
-  return { data: { success: true } };
+  return { data: { success } };
 };
